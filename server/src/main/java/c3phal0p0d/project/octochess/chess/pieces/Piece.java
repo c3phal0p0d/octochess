@@ -2,6 +2,8 @@ package c3phal0p0d.project.octochess.chess.pieces;
 
 import c3phal0p0d.project.octochess.chess.game.*;
 
+import java.util.ArrayList;
+
 public abstract class Piece {
     private final Colour colour;
 
@@ -22,7 +24,7 @@ public abstract class Piece {
     /**
      * Get an array of the squares that the piece must pass through while making the move,
      * starting with its initial position and ending with its final position
-     * @return array of coordinates
+     * @return array of squares
      */
-    public abstract Square[] getMovePath(Board board, Move move);
+    public abstract ArrayList<Square> getMovePath(Board board, Move move);
 }

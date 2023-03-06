@@ -2,6 +2,8 @@ package c3phal0p0d.project.octochess.chess.game;
 
 import c3phal0p0d.project.octochess.chess.pieces.*;
 
+import java.util.ArrayList;
+
 public class Game {
     private final Board board;
     private final Player[] players;
@@ -87,23 +89,44 @@ public class Game {
     public boolean playerMove(Player player, Square startSquare, Square endSquare){
         Move move = new Move(player, startSquare, endSquare);
 
-        if (move.getPiece().isValidMove(board, move)){
-            // check if square contains a piece
-            Piece piece = move.getEndSquare().getPiece();
-            if (piece!=null){
-                // check if piece belongs to the player
-                if (piece.getColour()==player.getColour()){
+        // make sure piece actually moves somewhere
+        if (move.getStartSquare().equals(move.getEndSquare())){
+            return false;
+        }
+
+        // check whether move is valid according to the rules for that piece
+        if (!move.getPiece().isValidMove(board, move)){
+            return false;
+        }
+
+        // check that piece's path is not blocked by any other piece, unless moving piece is a knight
+        Piece movePiece = move.getStartSquare().getPiece();
+        if (!(movePiece instanceof Knight)){
+            ArrayList<Square> movePath = movePiece.getMovePath(board, move);
+            for (Square square : movePath){
+                // make sure that all squares in the path except the first and final ones are empty
+                if (!(square.equals(move.getStartSquare()) || square.equals(move.getEndSquare())) && square.getPiece()!=null){
                     return false;
                 }
-                Player opponent = getCurrentPlayerTurn()==0 ? getPlayers()[1] : getPlayers()[0];
-
-                // remove piece from opponent's pieces array and add to their captured pieces array
-                opponent.removePiece(piece);
-                opponent.addCapturedPiece(piece);
             }
-            endSquare.setPiece(move.getPiece());
         }
-        return false;
+
+        // check if final square contains a piece
+        Piece piece = move.getEndSquare().getPiece();
+        if (piece!=null){
+            // check if piece belongs to the player
+            if (piece.getColour()==player.getColour()){
+                return false;
+            }
+            Player opponent = getCurrentPlayerTurn()==0 ? getPlayers()[1] : getPlayers()[0];
+
+            // remove piece from opponent's pieces array and add to their captured pieces array
+            opponent.removePiece(piece);
+            opponent.addCapturedPiece(piece);
+        }
+        endSquare.setPiece(move.getPiece());
+
+        return true;
     }
 
     /**

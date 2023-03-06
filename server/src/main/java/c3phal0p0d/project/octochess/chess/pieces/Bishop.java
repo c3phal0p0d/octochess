@@ -2,6 +2,8 @@ package c3phal0p0d.project.octochess.chess.pieces;
 
 import c3phal0p0d.project.octochess.chess.game.*;
 
+import java.util.ArrayList;
+
 public class Bishop extends Piece {
 
     public Bishop(Colour colour) {
@@ -10,11 +12,25 @@ public class Bishop extends Piece {
 
     @Override
     public boolean isValidMove(Board board, Move move) {
-        return false;
+        // can only move diagonally
+        return move.getEndSquare().getY() - move.getStartSquare().getY() == move.getEndSquare().getX() - move.getStartSquare().getX();
     }
 
     @Override
-    public Square[] getMovePath(Board board, Move move) {
-        return new Square[0];
+    public ArrayList<Square> getMovePath(Board board, Move move) {
+        ArrayList<Square> path = new ArrayList<>();
+
+        int rowDiff = move.getEndSquare().getY() - move.getStartSquare().getY();
+        int columnDiff = move.getEndSquare().getX() - move.getStartSquare().getX();
+        int numSquares = Math.abs(rowDiff);
+
+        // get all squares in a diagonal path to the finishing square
+        for (int i=0; i<numSquares; i++){
+            path.add(board.getSquare(move.getStartSquare().getX() + i*columnDiff/numSquares, move.getStartSquare().getY() + i*rowDiff/numSquares));
+        }
+
+        return path;
     }
+
+
 }
