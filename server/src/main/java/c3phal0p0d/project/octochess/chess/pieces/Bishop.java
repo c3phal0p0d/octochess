@@ -13,7 +13,7 @@ public class Bishop extends Piece {
     @Override
     public boolean isValidMove(Board board, Move move) {
         // can only move diagonally
-        return move.getEndSquare().getY() - move.getStartSquare().getY() == move.getEndSquare().getX() - move.getStartSquare().getX();
+        return Math.abs(move.getEndSquare().getY() - move.getStartSquare().getY()) == Math.abs(move.getEndSquare().getX() - move.getStartSquare().getX());
     }
 
     @Override

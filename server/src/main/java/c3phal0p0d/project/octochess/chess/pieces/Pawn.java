@@ -21,29 +21,32 @@ public class Pawn extends Piece {
         if (endY<startY){
             return false;
         }
-
-        // can only move diagonally to capture a piece, and only one square
-        if (startX!=endX && move.getEndSquare().getPiece()==null && endY-startY>1){
-            return false;
-        }
-
-        // cannot capture a piece vertically
-        if (startX==endX && move.getEndSquare().getPiece()!=null){
-            return false;
-        }
-
-        // can only move two squares forward if it is still at its start game position
-        if (endY-startY==2&&!(startY==1&&move.getStartSquare().getPiece().getColour()==Colour.WHITE
-                || startY==6 && move.getStartSquare().getPiece().getColour()==Colour.BLACK)){
+        // check for validity of diagonal moves
+        else if (Math.abs(endX-startX) == Math.abs(endY-startY)){
+            if (move.getEndSquare().getPiece()==null)   // can only move diagonally if there is a piece to capture
                 return false;
+            else if (endY-startY>1){    // can only move one square diagonally
+                 return false;
+            }
+            return true;
         }
-
+        // cannot capture a piece vertically
+        else if (startX==endX&&startY!=endY&&move.getEndSquare().getPiece()!=null){
+            return false;
+        }
+        // can only move two squares forward if it is still at its start game position
+        else if (endY-startY==2){
+            if (startY==1&&getColour()==Colour.WHITE || startY==6 && getColour()==Colour.BLACK){
+                return true;
+            }
+            return false;
+        }
         // can only move 1 square forward otherwise
-        if (endY-startY>1){
+        else if (endY-startY>1){
             return false;
         }
 
-        // En passant?
+        // TODO: En passant
 
         return true;
 
