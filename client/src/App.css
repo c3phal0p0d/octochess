@@ -1,0 +1,31 @@
+body {
+    color: white;
+    background-color: rgb(3, 13, 27);
+    text-align: center;
+}
+
+h1 {
+    font-family: "Didot";
+}
+
+/* Board */
+#board {
+    display: flex;
+    width: 440px;
+    height: 440px;
+    border: 2px solid rgb(62, 62, 62);
+}
+
+/* Square */
+.square {
+    width: 55px;
+    height: 55px;
+}
+
+[data-colour="white"] {
+    background-color: rgb(239, 221, 190);
+}
+
+[data-colour="black"] {
+    background-color: rgb(26, 66, 122);
+}
