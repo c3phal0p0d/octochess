@@ -1,4 +1,4 @@
-package c3phal0p0d.project.octochess.chess.game;
+package c3phal0p0d.project.octochess.entity.game;
 
 public class Board {
     private static final int NUM_ROWS = 8;

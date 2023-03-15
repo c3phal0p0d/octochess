@@ -1,19 +1,29 @@
-package c3phal0p0d.project.octochess.chess.game;
+package c3phal0p0d.project.octochess.entity;
 
-import c3phal0p0d.project.octochess.chess.pieces.*;
+import c3phal0p0d.project.octochess.entity.game.*;
+import c3phal0p0d.project.octochess.entity.pieces.*;
+//import jakarta.persistence.*;
 
 import java.util.ArrayList;
 
 public class Game {
+//    @Id
+//    private int id;
+
+    //@OneToOne
+    //@Column(name="board")
     private final Board board;
+
     private final Player[] players;
 
     private int currentPlayerTurn;
+    private Status status;
 
     public Game(){
         board = new Board();
         players = new Player[]{new Player(Colour.WHITE), new Player(Colour.BLACK)};
         setCurrentPlayerTurn(0);
+        setStatus(Status.WAITING_FOR_PLAYER);
 
         initializePieces(getPlayers()[0]);
         initializePieces(getPlayers()[1]);
@@ -77,7 +87,6 @@ public class Game {
         }
     }
 
-
     /* Gameplay logic */
     /**
      * Move a piece to another square
@@ -137,7 +146,6 @@ public class Game {
     }
 
 
-    /* Endgame logic */
     /**
      * Determine if a king is in check
      * @return
@@ -180,4 +188,11 @@ public class Game {
         this.currentPlayerTurn = currentPlayerTurn;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }

@@ -1,6 +1,6 @@
-package c3phal0p0d.project.octochess.chess.pieces;
+package c3phal0p0d.project.octochess.entity.pieces;
 
-import c3phal0p0d.project.octochess.chess.game.*;
+import c3phal0p0d.project.octochess.entity.game.*;
 
 import java.util.ArrayList;
 

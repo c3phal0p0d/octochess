@@ -1,6 +1,6 @@
-package c3phal0p0d.project.octochess.chess.game;
+package c3phal0p0d.project.octochess.entity.game;
 
-import c3phal0p0d.project.octochess.chess.pieces.Piece;
+import c3phal0p0d.project.octochess.entity.pieces.Piece;
 
 public class Move {
     private final Player player;

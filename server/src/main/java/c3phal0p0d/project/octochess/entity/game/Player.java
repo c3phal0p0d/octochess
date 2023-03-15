@@ -1,13 +1,13 @@
-package c3phal0p0d.project.octochess.chess.game;
+package c3phal0p0d.project.octochess.entity.game;
 
-import c3phal0p0d.project.octochess.chess.pieces.*;
+import c3phal0p0d.project.octochess.entity.pieces.*;
 
 import java.util.ArrayList;
 
 public class Player {
-    private final Colour colour;
-    private final ArrayList<Piece> pieces;
-    private final ArrayList<Piece> capturedPieces;
+    private Colour colour;
+    private ArrayList<Piece> pieces;
+    private ArrayList<Piece> capturedPieces;
 
     public Player(Colour colour){
         this.colour = colour;
