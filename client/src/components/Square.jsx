@@ -5,7 +5,7 @@ import Piece from './Piece';
 const Square = ({colour, piece}) => {
     return (
         <div className="square" data-colour={colour}>
-            {Piece("king", "black")}
+            {piece}
         </div>
     );
 }

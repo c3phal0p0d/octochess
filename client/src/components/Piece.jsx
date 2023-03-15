@@ -27,7 +27,7 @@ const Piece = ({piece, colour}) => {
             if (colour=="white"){ return (<WhiteBishop/>);} else { return (<BlackBishop/>);}
         case "knight":
             if (colour=="white"){ return (<WhiteKnight/>);} else { return (<BlackKnight/>);}
-        default: return (<BlackRook/>);   // <img src={require("../assets/images/rook1.png")}/>
+        default: return (<></>)
     }
 }
 

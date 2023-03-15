@@ -68,26 +68,30 @@ a:hover {
 #board {
     display: flex;
     flex-wrap: wrap;
-    width: 440px;
-    height: 440px;
+    width: 500px;
+    height: 448px;
     margin: 20px auto;
 }
 
 .square {
     width: 55px;
     height: 55px;
+    border: 1px solid black;
 }
 
-.square > img {
-    width: 40px;
-    height: 40px;
-    padding: 5px;
+.square > svg {
+    width: 37px;
+    height: 37px;
+    padding: 10px;
 }
 
 [data-colour="white"] {
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(255, 255, 255);
 }
 
 [data-colour="black"] {
-    background-color: rgb(130, 130, 130);
+    background-color: rgb(0, 0, 0);
+    /* background-color: white;
+    background-image: url("./assets/images/background.png");
+    background-size: 50px 50px; */
 }
