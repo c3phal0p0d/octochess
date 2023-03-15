@@ -1,12 +1,22 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import './App.css';
 
-import Board from './components/Board';
+import Home from './pages/Home';
+import Game from './pages/Game';
 
 const App = () => {
     return (
         <>
-            <h1>Octochess</h1>
-            <Board/>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/">
+                        <Route index element={<Home />} />
+                        <Route path="game" element={<Game />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
         </>
     );
 }

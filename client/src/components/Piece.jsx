@@ -1,15 +1,17 @@
-import {ReactComponent as BlackPawn} from '../assets/images/pawn_b.svg';
-import {ReactComponent as WhitePawn} from '../assets/images/pawn_w.svg';
-import {ReactComponent as BlackKing} from '../assets/images/king_b.svg';
-import {ReactComponent as WhiteKing} from '../assets/images/king_w.svg';
-import {ReactComponent as BlackQueen} from '../assets/images/queen_b.svg';
-import {ReactComponent as WhiteQueen} from '../assets/images/queen_w.svg';
-import {ReactComponent as BlackRook} from '../assets/images/rook_b.svg';
-import {ReactComponent as WhiteRook} from '../assets/images/rook_w.svg';
-import {ReactComponent as BlackBishop} from '../assets/images/bishop_b.svg';
-import {ReactComponent as WhiteBishop} from '../assets/images/bishop_w.svg';
-import {ReactComponent as BlackKnight} from '../assets/images/knight_b.svg';
-import {ReactComponent as WhiteKnight} from '../assets/images/knight_w.svg';
+import React from 'react';
+
+import {ReactComponent as BlackPawn} from '../assets/images/pieces/pawn_b.svg';
+import {ReactComponent as WhitePawn} from '../assets/images/pieces/pawn_w.svg';
+import {ReactComponent as BlackKing} from '../assets/images/pieces/king_b.svg';
+import {ReactComponent as WhiteKing} from '../assets/images/pieces/king_w.svg';
+import {ReactComponent as BlackQueen} from '../assets/images/pieces/queen_b.svg';
+import {ReactComponent as WhiteQueen} from '../assets/images/pieces/queen_w.svg';
+import {ReactComponent as BlackRook} from '../assets/images/pieces/rook_b.svg';
+import {ReactComponent as WhiteRook} from '../assets/images/pieces/rook_w.svg';
+import {ReactComponent as BlackBishop} from '../assets/images/pieces/bishop_b.svg';
+import {ReactComponent as WhiteBishop} from '../assets/images/pieces/bishop_w.svg';
+import {ReactComponent as BlackKnight} from '../assets/images/pieces/knight_b.svg';
+import {ReactComponent as WhiteKnight} from '../assets/images/pieces/knight_w.svg';
 
 const Piece = ({piece, colour}) => {
     switch (piece){
@@ -25,7 +27,7 @@ const Piece = ({piece, colour}) => {
             if (colour=="white"){ return (<WhiteBishop/>);} else { return (<BlackBishop/>);}
         case "knight":
             if (colour=="white"){ return (<WhiteKnight/>);} else { return (<BlackKnight/>);}
-        default: return (<BlackRook/>);
+        default: return (<BlackRook/>);   // <img src={require("../assets/images/rook1.png")}/>
     }
 }
 

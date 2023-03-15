@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Square from "./Square";
 import Piece from './Piece';
 
@@ -18,7 +20,8 @@ const Board = () => {
         <div id="board">
             {squares.map((row) => (
                 row.map((element) => (
-                    <Square key={element.id} colour={element.square.props.colour} piece={element.square.props.piece}/>
+                    //<Square key={element.id} colour={element.square.props.colour} piece={element.square.props.piece}/>
+                    <Square key={element.id} colour={element.id % 2 != 0 ? "white" : "black"} piece="pawn"/>
                 ))
             ))}
         </div>
