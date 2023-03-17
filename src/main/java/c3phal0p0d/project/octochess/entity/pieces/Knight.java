@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Knight extends Piece {
 
     public Knight(Colour colour) {
-        super(colour);
+        super(colour, PieceType.KNIGHT);
     }
 
     @Override

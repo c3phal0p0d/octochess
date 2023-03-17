@@ -15,18 +15,18 @@ import {ReactComponent as WhiteKnight} from '../assets/images/pieces/knight_w.sv
 
 const Piece = ({piece, colour}) => {
     switch (piece){
-        case "pawn":
-            if (colour=="white"){ return (<WhitePawn/>); } else { return (<BlackPawn/>);}
-        case "king":
-            if (colour=="white"){ return (<WhiteKing/>);} else { return (<BlackKing/>);}
-        case "queen":
-            if (colour=="white"){ return (<WhiteQueen/>);} else { return (<BlackQueen/>);}
-        case "rook":
-            if (colour=="white"){ return (<WhiteRook/>);} else { return (<BlackRook/>);}
-        case "bishop":
-            if (colour=="white"){ return (<WhiteBishop/>);} else { return (<BlackBishop/>);}
-        case "knight":
-            if (colour=="white"){ return (<WhiteKnight/>);} else { return (<BlackKnight/>);}
+        case "PAWN":
+            if (colour=="WHITE"){ return (<WhitePawn/>); } else { return (<BlackPawn/>);}
+        case "KING":
+            if (colour=="WHITE"){ return (<WhiteKing/>);} else { return (<BlackKing/>);}
+        case "QUEEN":
+            if (colour=="WHITE"){ return (<WhiteQueen/>);} else { return (<BlackQueen/>);}
+        case "ROOK":
+            if (colour=="WHITE"){ return (<WhiteRook/>);} else { return (<BlackRook/>);}
+        case "BISHOP":
+            if (colour=="WHITE"){ return (<WhiteBishop/>);} else { return (<BlackBishop/>);}
+        case "KNIGHT":
+            if (colour=="WHITE"){ return (<WhiteKnight/>);} else { return (<BlackKnight/>);}
         default: return (<></>)
     }
 }

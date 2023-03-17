@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Queen extends Piece {
 
     public Queen(Colour colour) {
-        super(colour);
+        super(colour, PieceType.QUEEN);
     }
 
     @Override

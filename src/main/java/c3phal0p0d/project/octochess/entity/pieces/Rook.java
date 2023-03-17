@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Rook extends Piece {
 
     public Rook(Colour colour) {
-        super(colour);
+        super(colour, PieceType.ROOK);
     }
 
     @Override

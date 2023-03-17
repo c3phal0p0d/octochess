@@ -85,13 +85,11 @@ a:hover {
     padding: 10px;
 }
 
-[data-colour="white"] {
+[data-colour="WHITE"] {
     background-color: rgb(255, 255, 255);
 }
 
-[data-colour="black"] {
+[data-colour="BLACK"] {
     background-color: rgb(0, 0, 0);
-    /* background-color: white;
-    background-image: url("./assets/images/background.png");
-    background-size: 50px 50px; */
+
 }
