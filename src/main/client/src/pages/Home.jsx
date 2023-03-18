@@ -8,7 +8,7 @@ const Home = () => {
             <h1>Octochess</h1>
             <div id="buttons">
                 <Link to="/game">Start new game</Link>
-                <Link to="/game">Join game</Link>
+                <Link to="/game/64152f38370c9075bfad8b74">Join game</Link>
             </div>
         </div>
     );

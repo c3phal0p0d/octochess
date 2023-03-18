@@ -2,20 +2,21 @@ package c3phal0p0d.project.octochess.entity;
 
 import c3phal0p0d.project.octochess.entity.game.*;
 import c3phal0p0d.project.octochess.entity.pieces.*;
-//import jakarta.persistence.*;
+
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 
+@Data
+@Document
 public class Game {
-//    @Id
-//    private int id;
+    @Id
+    private String Id;
 
-    //@OneToOne
-    //@Column(name="board")
     private final Board board;
-
     private final Player[] players;
-
     private int currentPlayerTurn;
     private Status status;
 
@@ -170,29 +171,4 @@ public class Game {
         return false;
     }
 
-
-    /* Getters and setters */
-    public Board getBoard() {
-        return board;
-    }
-
-    public Player[] getPlayers() {
-        return players;
-    }
-
-    public int getCurrentPlayerTurn() {
-        return currentPlayerTurn;
-    }
-
-    public void setCurrentPlayerTurn(int currentPlayerTurn) {
-        this.currentPlayerTurn = currentPlayerTurn;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 }

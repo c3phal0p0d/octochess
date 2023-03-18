@@ -5,18 +5,21 @@ import Board from '../components/Board';
 import PlayerInfo from '../components/PlayerInfo';
 import Navbar from '../Navbar';
 
-const GAME_API_URL = 'http://localhost:8080/api/game/';
+const GAME_API_URL = 'http://localhost:8080/api/game';
 
-const Game = () => {
+const Game = ({isNew}) => {
 
     const [game, setGame] = useState();
 
     const getGame = async () => {
         try {
-            const response = await axios.get(GAME_API_URL + '0');
+            let response;
+            if (isNew){
+                response = await axios.post(GAME_API_URL + '/new');
+            } else {
+                response = await axios.post(GAME_API_URL + '/join/64152f38370c9075bfad8b74');
+            }
             setGame(response.data);
-            console.log(response.data.board.squares);
-            console.log("EEEE");
         } catch (err) {
             console.log(err);
         }
@@ -29,8 +32,6 @@ const Game = () => {
     if (!game){
         return <div>Loading</div>;
     }
-
-    console.log(game.board.squares);
 
     return (
         <>

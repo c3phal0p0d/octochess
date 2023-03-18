@@ -1,14 +1,15 @@
 package c3phal0p0d.project.octochess.service;
 
 import c3phal0p0d.project.octochess.entity.Game;
-//import c3phal0p0d.project.octochess.repository.GameRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import c3phal0p0d.project.octochess.repository.GameRepository;
+
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+@AllArgsConstructor
 @Service
 public class GameService {
-//    @Autowired
-//    GameRepository gameRepository;
+    private final GameRepository gameRepository;
 
     /**
      * Create a new game
@@ -16,7 +17,7 @@ public class GameService {
      */
     public Game newGame(){
         Game game = new Game();
-//        gameRepository.insert(game);
+        gameRepository.insert(game);
 
         return game;
     }
@@ -26,26 +27,13 @@ public class GameService {
      * @param id
      * @return game
      */
-    public Game joinGame(Long id){
-        Game game = new Game();
-//        if (gameRepository.findById(id).isPresent()){
-//            game = gameRepository.findById(id).get();
-//        }
+    public Game joinGame(String id){
+        Game game = null;
+        if (gameRepository.findById(id).isPresent()){
+            game = gameRepository.findById(id).get();
+        }
 
         return game;
     }
 
-    /**
-     * Get an ongoing game by id
-     * @param id
-     * @return game
-     */
-    public Game getGame(Long id){
-        Game game = new Game();
-//        if (gameRepository.findById(id).isPresent()){
-//            game = gameRepository.findById(id).get();
-//        }
-
-        return game;
-    }
 }
