@@ -4,6 +4,7 @@ import c3phal0p0d.project.octochess.entity.Game;
 import c3phal0p0d.project.octochess.service.GameService;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/game")
 public class GameController {
+    @Autowired
     private final GameService gameService;
 
     @PostMapping("/new")

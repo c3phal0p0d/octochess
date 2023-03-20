@@ -6,17 +6,19 @@ import c3phal0p0d.project.octochess.entity.pieces.*;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.ArrayList;
 
-@Data
 @Document(collection="games")
 public class Game {
-    @Id
+    @MongoId(FieldType.OBJECT_ID)
     private String id;
 
-    private final Board board;
-    private final Player[] players;
+    private Board board;
+    private Player[] players;
+
     private int currentPlayerTurn;
     private Status status;
 
@@ -177,6 +179,38 @@ public class Game {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    public Player[] getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(Player[] players) {
+        this.players = players;
+    }
+
+    public int getCurrentPlayerTurn() {
+        return currentPlayerTurn;
+    }
+
+    public void setCurrentPlayerTurn(int currentPlayerTurn) {
+        this.currentPlayerTurn = currentPlayerTurn;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
 }

@@ -5,8 +5,8 @@ import c3phal0p0d.project.octochess.entity.game.*;
 import java.util.ArrayList;
 
 public abstract class Piece {
-    private final Colour colour;
-    private final PieceType type;
+    private Colour colour;
+    private PieceType type;
 
     public Piece(Colour colour, PieceType type) {
         this.colour = colour;
@@ -17,8 +17,16 @@ public abstract class Piece {
         return colour;
     }
 
+    public void setColour(Colour colour) {
+        this.colour = colour;
+    }
+
     public PieceType getType() {
         return type;
+    }
+
+    public void setType(PieceType type) {
+        this.type = type;
     }
 
     /**

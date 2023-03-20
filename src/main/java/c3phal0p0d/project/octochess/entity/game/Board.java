@@ -4,7 +4,7 @@ public class Board {
     private static final int NUM_ROWS = 8;
     private static final int NUM_COLUMNS = 8;
 
-    private final Square[][] squares;
+    private Square[][] squares;
 
     public Board(){
         // initialize array of board squares with their colours
@@ -18,6 +18,10 @@ public class Board {
 
     public Square[][] getSquares() {
         return squares;
+    }
+
+    public void setSquares(Square[][] squares) {
+        this.squares = squares;
     }
 
     /**
