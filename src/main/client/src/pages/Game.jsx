@@ -1,48 +1,66 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
-import Board from '../components/Board';
+import Board from '../components/game/Board';
 import PlayerInfo from '../components/PlayerInfo';
 import Navbar from '../Navbar';
-
-const GAME_API_URL = 'http://localhost:8080/api/game';
+import {getNewGame, getExistingGame} from '../api/fetchGame';
+import {useParams} from 'react-router-dom';
 
 const Game = ({isNew}) => {
-
+    const params = useParams();
     const [game, setGame] = useState();
+    const [isLoading, setLoading] = useState(true);
 
-    const getGame = async () => {
-        try {
-            let response;
-            if (isNew){
-                response = await axios.post(GAME_API_URL + '/new');
-            } else {
-                response = await axios.post(GAME_API_URL + '/join/64152f38370c9075bfad8b74');
-            }
-            setGame(response.data);
-        } catch (err) {
-            console.log(err);
+    const getGame = () => {
+        let apiPromise;
+        if (isNew){
+            apiPromise = getNewGame();
+        } else {
+            console.log(params);
+            console.log(params.gameId);
+            apiPromise = getExistingGame(params.gameId);
         }
+        apiPromise.then(function(response){
+            console.log(response.data);
+            setGame(response.data);
+            setLoading(false);
+        });
     }
 
     useEffect(() => {
         getGame();
     },[])
 
-    if (!game){
-        return <div>Loading</div>;
+    if (isLoading){
+        return <div>Loading...</div>;
+    }
+
+    if (!isLoading && !game){
+        return (
+            <>
+                <Navbar />
+                <div>Game with specified ID does not exist</div>
+            </>
+        );
     }
 
     return (
         <>
             <Navbar />
             <div id="content">
-                <PlayerInfo/>
+                <PlayerInfo number={1} colour={"BLACK"}/>
                 <Board squaresData={game.board.squares}/>
-                <PlayerInfo/>
+                <PlayerInfo number={2} colour={"WHITE"}/>
+                <div>
+                    <div>Game ID: {game.id} </div>
+                </div>
             </div>
         </>
     );
+}
+
+Game.defaultProps = {
+    id: null
 }
 
 export default Game;

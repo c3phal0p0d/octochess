@@ -13,7 +13,7 @@ const App = () => {
                     <Route path="/">
                         <Route index element={<Home />} />
                         <Route path="game" element={<Game isNew={true} />} />
-                        <Route path="game/64152f38370c9075bfad8b74" element={<Game isNew={false} />} />
+                        <Route path="game/:gameId" element={<Game isNew={false} />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

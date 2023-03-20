@@ -1,6 +1,7 @@
 package c3phal0p0d.project.octochess.service;
 
 import c3phal0p0d.project.octochess.entity.Game;
+import c3phal0p0d.project.octochess.entity.game.Status;
 import c3phal0p0d.project.octochess.repository.GameRepository;
 
 import lombok.AllArgsConstructor;
@@ -30,7 +31,8 @@ public class GameService {
     public Game joinGame(String id){
         Game game = null;
         if (gameRepository.findById(id).isPresent()){
-            game = gameRepository.findById(id).get();
+            //game = gameRepository.findById(id).get();
+            //game.setStatus(Status.IN_PROGRESS);
         }
 
         return game;

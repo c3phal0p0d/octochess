@@ -10,10 +10,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.ArrayList;
 
 @Data
-@Document
+@Document(collection="games")
 public class Game {
     @Id
-    private String Id;
+    private String id;
 
     private final Board board;
     private final Player[] players;
@@ -169,6 +169,14 @@ public class Game {
      */
     public boolean isStalemate(){
         return false;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 }
